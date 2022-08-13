@@ -4,7 +4,7 @@
 
 //declaracion de funciones/procedimientos 
 void MostrarProductos(int codigo_producto[], int precio_producto[],int cantidad_productos);
-
+int BuscarProducto(int codigo_producto[], int codigo_buscado, int cantidad_productos);
 
 
 //sistema de gestion de inventarios
@@ -17,8 +17,8 @@ int main(int argc, char *argv[]) {
 	int codigo_producto[cantidad_productos];
 	int precio_producto[cantidad_productos];
 	
-	int codigo, precio, numero_venta;
-	
+	int codigo, precio, numero_venta, monto_venta, monto_diario;
+	int indice_buscado;
 	int i=0;
 	
 	//inicializo los vectores para evitar se muestre datos random/basura al recorrerlos
@@ -51,9 +51,22 @@ int main(int argc, char *argv[]) {
 	while(numero_venta != 0)
 	{
 	
-		
+	printf("ingrese el codigo de producto que desea vender: ");
+	scanf("%d", &codigo);		
 	
-	printf("Ingrese el numero de ventas: ");
+	
+	indice_buscado = BuscarProducto(codigo_producto,codigo, cantidad_productos);
+	
+	
+	if(indice_buscado == -1)
+	{
+		printf("\n El producto es inexistente");
+	}else{
+		printf("\nEl producto existe");
+	}
+	
+	
+	printf("\nIngrese el numero de ventas: ");
 	scanf("%d", &numero_venta);	
 	}
 	
@@ -74,4 +87,21 @@ void MostrarProductos(int codigo_producto[], int precio_producto[], int cantidad
 	{
 		printf("\nel valor es de : %d %d\n",codigo_producto[i], precio_producto[i] );
 	}
+
 }
+
+
+int BuscarProducto(int codigo_producto[], int codigo_buscado, int cantidad_productos)
+{
+	int i; 
+	for(i=0; i<cantidad_productos; i++)
+	{
+		if(codigo_producto[i] == codigo_buscado)
+		{
+			return i;
+		}
+			
+	}
+	return -1;
+}
+
