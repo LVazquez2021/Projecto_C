@@ -5,4 +5,4 @@
 - punteros (ubicacion en la memoria **&**) 
 - vectores inicializacion y recorrido
 - Funciones y procedimientos declaracion definicion y ejecucion
-- bucles de repeticion ej. **for** y **while **
+- bucles de repeticion ej. **for** y **while**
